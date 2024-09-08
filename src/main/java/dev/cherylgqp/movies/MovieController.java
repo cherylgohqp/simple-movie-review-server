@@ -29,14 +29,14 @@ public class MovieController {
         return new ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}") // To search a movie by ID
-    public ResponseEntity<Optional<Movie>> getSingleMovie(@PathVariable ObjectId id) {
+    @GetMapping("/{imdbId}") // To search a movie by ID
+    public ResponseEntity<Optional<Movie>> getSingleMovie(@PathVariable String imdbId) {
         /*
          * note: @PathVariable lets the framework knows that we are passing the info we
          * get from getMapping as a PathVariable and that we want to convert that to an
          * ObjectId id
          */
-        return new ResponseEntity<Optional<Movie>>(movieService.singleMovie(id), HttpStatus.OK);
+        return new ResponseEntity<Optional<Movie>>(movieService.singleMovie(imdbId), HttpStatus.OK);
     }
 
 }

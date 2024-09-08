@@ -24,8 +24,8 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    public Optional<Movie> singleMovie(ObjectId id) {
+    public Optional<Movie> singleMovie(String imdbId) {
         // Optional lets Java know that you might return null if Id doesnt exist
-        return movieRepository.findById(id);
+        return movieRepository.findMovieByImdbId(imdbId);
     }
 }
