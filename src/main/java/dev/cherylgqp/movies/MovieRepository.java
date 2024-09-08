@@ -13,6 +13,11 @@ public interface MovieRepository extends MongoRepository<Movie, ObjectId> {
      * the job actually talking to the database and getting the data back.
      */
 
-    Optional<Movie> findMovieByImdbId(String imdbId); // Springboot datamongodb is intelligent enough to know what this
-                                                      // method does
+    Optional<Movie> findMovieByImdbId(String imdbId);
+    /*
+     * Springboot datamongodb is intelligent enough to know what this method does
+     * Note: you can form similar dynamic queries by using any property name in your
+     * movie class as long as they are unique else you will get multiple movies with
+     * the id or the same name
+     */
 }
