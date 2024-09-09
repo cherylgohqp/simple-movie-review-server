@@ -17,4 +17,9 @@ public class Review {
     @Id
     private ObjectId id;
     private String body; // review body
+
+    //customer constructor that takes in the body
+    public Review(String body) {
+        this.body = body;
+    }
 }
