@@ -54,6 +54,7 @@ public class Movie {
     private String trailerLink; // url for movie trailer
     private List<String> genres; // is a list of strings since there can be multiple genres
     private List<String> backdrops; // movie backdrops used in the FE side
+    private List<String> poster; // movie backdrops used in the FE side
 
     @DocumentReference // this field references another document called review
     /*
