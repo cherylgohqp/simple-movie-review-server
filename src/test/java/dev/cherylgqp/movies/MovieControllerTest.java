@@ -73,8 +73,8 @@ public class MovieControllerTest {
 
     //======================GET single test================================================
     @Test
-    @DisplayName("Test 2: Get single Movie")
-    public void testGetSingleMovie() throws Exception {
+    @DisplayName("Test 2: Get single Movie Success testcase")
+    public void testGetSingleMovieSuccess() throws Exception {
         Optional<Movie> movie = Optional.ofNullable(TestUtil.getMovie1());
 		Mockito.when(movieService.singleMovie("testImdbId1")).thenReturn(movie);
 		RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/movies/{imdbId}", "testImdbId1");
@@ -84,6 +84,17 @@ public class MovieControllerTest {
 				.andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.imdbId").value(movie.get().getImdbId()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title").value(movie.get().getTitle()))
+                .andDo(MockMvcResultHandlers.print());
 				;
 	}
+
+    @Test
+    @DisplayName("Test 2: Get single Movie Failed testcase")
+    public void testGetSingleMovieFailed() throws Exception {
+
+		Mockito.when(movieService.singleMovie("1")).thenReturn(null);
+		RequestBuilder request = MockMvcRequestBuilders.get("/birds/{id}", "1");
+        mockMvc.perform(request)
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
 }
