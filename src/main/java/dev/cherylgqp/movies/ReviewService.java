@@ -25,8 +25,6 @@ public class ReviewService {
         Review review = reviewRepository.insert(new Review(reviewBody)); //save the review on insert => .insert returns the data you just pushed into your db //creates a new review
         //repository works as a intermediary layer between the service class and the database!
         
-        System.out.println("Review created: " + review);
-        System.out.println("what does this give " + new Review(reviewBody));
         mongoTemplate.update(Movie.class) //perform an update call on the Movie class (since each movie has an array of reviewIds)
         .matching(Criteria.where("imdbId").is(imdbId)) //to find the movie where the imdbid of the movie in the database matches the imdbid that we have received from the user
         .apply(new Update().push("reviewIds").value(review)) //to apply this update to the database
