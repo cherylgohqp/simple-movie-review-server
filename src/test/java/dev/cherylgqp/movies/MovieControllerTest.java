@@ -7,23 +7,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import de.flapdoodle.os.common.matcher.Matchers;
-import static org.hamcrest.Matchers.equalTo;
-import org.assertj.core.api.Assertions;
 import org.hamcrest.collection.IsCollectionWithSize;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -63,7 +55,6 @@ public class MovieControllerTest {
 		List<Movie> movies = TestUtil.createMovieListForTesting();
 		Mockito.when(movieService.allMovies()).thenReturn(movies);
 		RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/movies");
-        System.out.println("REQUESTT " + request);
 		mockMvc.perform(request)
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
@@ -85,7 +76,7 @@ public class MovieControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.imdbId").value(movie.get().getImdbId()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title").value(movie.get().getTitle()))
                 .andDo(MockMvcResultHandlers.print());
-				;
+				
 	}
 
     @Test

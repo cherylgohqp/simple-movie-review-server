@@ -14,7 +14,8 @@ public class TestUtil {
         movie1.setTitle("Test Movie 1");
         movie1.setReleaseDate("2023-09-11");
         movie1.setGenres(Arrays.asList("Action", "Adventure"));
-        movie1.setBackdrops(Arrays.asList("backdrop-1", "backdrop-2"));   
+        movie1.setBackdrops(Arrays.asList("backdrop-1", "backdrop-2"));
+        movie1.setReviewIds(new ArrayList<>());  
 		return movie1;
 	}
 
@@ -24,7 +25,8 @@ public class TestUtil {
         movie2.setTitle("Test Movie 2");
         movie2.setReleaseDate("2023-10-11");
         movie2.setGenres(Arrays.asList("Romance", "Adventure"));
-        movie2.setBackdrops(Arrays.asList("backdrop-1", "backdrop-2"));   
+        movie2.setBackdrops(Arrays.asList("backdrop-1", "backdrop-2"));
+        movie2.setReviewIds(new ArrayList<>());  
 		return movie2;
 	}
 
